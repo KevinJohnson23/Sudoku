@@ -1,2 +1,1 @@
-# Sudoku
-React app to play Sudoku
+React app to play Sudoku!
