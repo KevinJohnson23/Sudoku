@@ -1,28 +1,24 @@
-import { useState } from "react"
-
-export default function Cell() {
-  const [value, setValue] = useState(0);
-
+export default function Cell({columnIndex, value, cellChanged}) {
   function isInputValid(newValue) {
     if (!Number.isInteger(newValue)) {
       return false
     }
-    return newValue >= 0 && newValue <= 9
+    return newValue >= 1 && newValue <= 9
   }
 
   function handleInput(inputBox) {
-    let newValue = inputBox.value
-    newValue = newValue.slice(-1)
+    let inputValue = inputBox.value
+    let newValue = inputValue.slice(-1)
     if (newValue === "") {
-      setValue(null)
+      cellChanged(columnIndex, "")
       return
     }
     newValue = parseInt(newValue)
     if (isInputValid(newValue)) {
-      setValue(newValue)
+      cellChanged(columnIndex, newValue)
       inputBox.value = newValue
     } else {
-      inputBox.value = value
+      inputBox.value = inputValue.slice(1) || ""
     }
   }
 
