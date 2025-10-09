@@ -16,7 +16,7 @@ export default function Row({rowIndex, row, rowChanged}) {
   }
 
   return (
-    <div>
+    <div className="row">
       {newCell(0)}
       {newCell(1)}
       {newCell(2)}

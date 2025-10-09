@@ -1,0 +1,38 @@
+:root {
+  --cell-size: 8;
+  --normal-border_width: 1px;
+  --bold-border_width: 2px;
+}
+
+.cell {
+  background-color: #ecedf0;
+  aspect-ratio: 1;
+  width: calc(min(1vmin, 1%) * var(--cell-size));
+  box-sizing: border-box;
+  border: solid var(--normal-border_width);
+  text-align: center;
+  font-size: 150%;
+  font-family: Helvetica;
+  transition-duration: 0.05s;
+  caret-color: transparent;
+}
+.cell:nth-child(3n+1):not(:first-child) {
+  border-left: solid var(--bold-border_width);
+}
+.cell:nth-child(3n):not(:last-child) {
+  border-right: solid var(--bold-border_width);
+}
+.grid > .row:nth-child(3n+1):not(:first-child) > .cell {
+  border-top: solid var(--bold-border_width);
+}
+.grid > .row:nth-child(3n):not(:last-child) > .cell {
+  border-bottom: solid var(--bold-border_width);
+}
+.cell:focus {
+  outline: none;
+  transform: scale(1.07);
+  background-color: #ffffff;
+}
+.cell::selection {
+  background: transparent;
+}

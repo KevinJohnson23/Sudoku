@@ -15,7 +15,7 @@ export default function Grid({grid, gridChanged}) {
   }
 
   return (
-    <>
+    <div className="grid">
       {newRow(0)}
       {newRow(1)}
       {newRow(2)}
@@ -25,6 +25,6 @@ export default function Grid({grid, gridChanged}) {
       {newRow(6)}
       {newRow(7)}
       {newRow(8)}
-    </>
+    </div>
   )
 }
