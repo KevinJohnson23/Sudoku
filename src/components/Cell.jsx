@@ -7,7 +7,7 @@ export default function Cell({columnIndex, value, cellChanged}) {
   }
 
   function handleInput(inputBox) {
-    let inputValue = inputBox.value
+    const inputValue = inputBox.value
     let newValue = inputValue.slice(-1)
     if (newValue === "") {
       cellChanged(columnIndex, "")
@@ -22,12 +22,20 @@ export default function Cell({columnIndex, value, cellChanged}) {
     }
   }
 
+  function handleFocus(inputBox) {
+    const length = inputBox.value.length
+    inputBox.setSelectionRange(length, length)
+  }
+
   return (
     <input 
       type="text" 
       className="cell"
       value={value}
       onInput={e => handleInput(e.target)}
+      onFocus={e => handleFocus(e.target)}
+      onKeyUp={e => handleFocus(e.target)}
+      onClick={e => handleFocus(e.target)}
     />
   )
 }
