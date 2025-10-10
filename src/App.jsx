@@ -43,15 +43,16 @@ function App() {
   return (
     <>
       <CompletionScreen
+        newPuzzle={newPuzzle}
         isComplete={isComplete}
       />
       <div>
         <h1>Play Sudoku</h1>
       </div>
       <div>
-        <Grid 
+        <Grid
           grid={puzzle.grid}
-          gridChanged={gridChanged} 
+          gridChanged={gridChanged}
           solution={puzzle.solution}
         />
       </div>

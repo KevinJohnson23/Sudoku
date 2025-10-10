@@ -1,4 +1,4 @@
-export default function Cell({columnIndex, value, cellChanged, solution}) {
+export default function Cell({ columnIndex, value, cellChanged, solution }) {
   function isInputValid(newValue) {
     if (!Number.isInteger(newValue)) {
       return false
@@ -29,18 +29,17 @@ export default function Cell({columnIndex, value, cellChanged, solution}) {
 
   if (value == solution) {
     return (
-      <input 
-        type="text" 
+      <input
+        type="text"
         className="cell fixed"
         value={value || ""}
         readOnly
       />
     )
-  } else
-  {
+  } else {
     return (
-      <input 
-        type="text" 
+      <input
+        type="text"
         className="cell editable"
         value={value || ""}
         onInput={e => handleInput(e.target)}

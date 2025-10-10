@@ -3,7 +3,7 @@ import getCandidates from "./util/getCandidates"
 
 function fillGrid(grid, numFilled) {
   numFilled = numFilled || 0
-  if (numFilled == 9**2) {
+  if (numFilled == 9 ** 2) {
     return grid
   }
   const row = Math.floor(numFilled / 9)
@@ -15,7 +15,7 @@ function fillGrid(grid, numFilled) {
   for (let candidate of candidates) {
     const newGrid = copyGrid(grid)
     newGrid[row][col] = candidate
-    const filledGrid = fillGrid(newGrid, numFilled+1)
+    const filledGrid = fillGrid(newGrid, numFilled + 1)
     if (filledGrid) {
       return filledGrid
     }

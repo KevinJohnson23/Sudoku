@@ -28,8 +28,8 @@ function destroyGrid(grid, attempts) {
     let randomRow = null
     let randomCol = null
     do {
-      randomRow = Math.floor(Math.random()*9)
-      randomCol = Math.floor(Math.random()*9)
+      randomRow = Math.floor(Math.random() * 9)
+      randomCol = Math.floor(Math.random() * 9)
     } while (!grid[randomRow][randomCol] && !tried.has(`${randomRow},${randomCol}`))
     tried.add(`${randomRow},${randomCol}`)
     const newGrid = copyGrid(grid)

@@ -1,9 +1,9 @@
 function getBlock(grid, row, col) {
   const block = []
-  const yStart = Math.floor(row/3)*3
-  const yEnd = yStart+3
-  const xStart = Math.floor(col/3)*3
-  const xEnd = xStart+3
+  const yStart = Math.floor(row / 3) * 3
+  const yEnd = yStart + 3
+  const xStart = Math.floor(col / 3) * 3
+  const xEnd = xStart + 3
   for (let y = yStart; y < yEnd; y++) {
     for (let x = xStart; x < xEnd; x++) {
       if (grid[y][x]) {
