@@ -28,14 +28,14 @@ export default function Cell({columnIndex, value, cellChanged}) {
   }
 
   return (
-    <input 
-      type="text" 
-      className="cell"
-      value={value}
-      onInput={e => handleInput(e.target)}
-      onFocus={e => handleFocus(e.target)}
-      onKeyUp={e => handleFocus(e.target)}
-      onClick={e => handleFocus(e.target)}
-    />
-  )
+      <input 
+        type="text" 
+        className="cell"
+        value={value || ""}
+        onInput={e => handleInput(e.target)}
+        onFocus={e => handleFocus(e.target)}
+        onKeyUp={e => handleFocus(e.target)}
+        onClick={e => handleFocus(e.target)}
+      />
+    )
 }

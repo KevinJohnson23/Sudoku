@@ -2,11 +2,13 @@ import { useState } from "react"
 import "./App.css"
 import Grid from "./components/Grid"
 import generate from "./sudoku/generator"
+import destroy from "./sudoku/destroyer"
 
-const generatedGrid = generate()
+const solution = generate()
+const initial = destroy(solution)
 
 function App() {
-  const [grid, setGrid] = useState(generatedGrid)
+  const [grid, setGrid] = useState(initial)
   function gridChanged(newGrid) {
     setGrid(newGrid)
   }
