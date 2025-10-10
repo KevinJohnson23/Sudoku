@@ -8,10 +8,27 @@ const solution = generate()
 const initial = destroy(solution)
 
 function App() {
-  const [grid, setGrid] = useState(initial)
+  const [puzzle, setPuzzle] = useState({
+    solution: solution,
+    grid: initial
+  })
+
   function gridChanged(newGrid) {
-    setGrid(newGrid)
+    setPuzzle({
+      solution: puzzle.solution,
+      grid: newGrid
+    })
   }
+
+  function newPuzzle() {
+    const newSolution = generate()
+    const newInitial = destroy(newSolution)
+    setPuzzle({
+      solution: newSolution,
+      grid: newInitial
+    })
+  }
+
   return (
     <>
       <div>
@@ -19,10 +36,15 @@ function App() {
       </div>
       <div>
         <Grid 
-          grid={grid}
+          grid={puzzle.grid}
           gridChanged={gridChanged} 
-          solution={solution}
+          solution={puzzle.solution}
         />
+      </div>
+      <div>
+        <button onClick={newPuzzle}>
+          Generate Puzzle
+        </button>
       </div>
     </>
   )
