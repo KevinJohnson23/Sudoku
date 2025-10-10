@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "./App.css"
+import "./App.scss"
 import Grid from "./components/Grid"
 import CompletionScreen from "./components/CompletionScreen"
 import generate from "./sudoku/generator"
