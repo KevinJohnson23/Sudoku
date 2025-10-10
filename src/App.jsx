@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "./App.css"
 import Grid from "./components/Grid"
+import CompletionScreen from "./components/CompletionScreen"
 import generate from "./sudoku/generator"
 import destroy from "./sudoku/destroyer"
 
@@ -29,8 +30,21 @@ function App() {
     })
   }
 
+  let isComplete = true
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      if (puzzle.grid[row][col] != puzzle.solution[row][col]) {
+        isComplete = false
+        break
+      }
+    }
+  }
+
   return (
     <>
+      <CompletionScreen
+        isComplete={isComplete}
+      />
       <div>
         <h1>Play Sudoku</h1>
       </div>

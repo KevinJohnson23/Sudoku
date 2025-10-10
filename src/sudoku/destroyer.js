@@ -1,6 +1,8 @@
 import copyGrid from "./util/copyGrid"
 import getCandidates from "./util/getCandidates"
 
+const ATTEMPTS = 1//9**2
+
 function getSolutions(grid) {
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
@@ -41,7 +43,7 @@ function destroyGrid(grid, attempts) {
 }
 
 function destroy(grid) {
-  return destroyGrid(grid, 9**2)
+  return destroyGrid(grid, ATTEMPTS)
 }
 
 export default destroy
