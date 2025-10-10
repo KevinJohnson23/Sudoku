@@ -36,3 +36,6 @@
 .cell::selection {
   background: transparent;
 }
+.cell:hover {
+  cursor: pointer;
+}
