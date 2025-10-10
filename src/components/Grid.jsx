@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Row from "./Row"
 
-export default function Grid({grid, gridChanged}) {
+export default function Grid({grid, gridChanged, solution}) {
   function rowChanged(rowIndex, newRow) {
     const newGrid = grid.slice()
     newGrid[rowIndex] = newRow
@@ -10,7 +10,12 @@ export default function Grid({grid, gridChanged}) {
 
   function newRow(rowIndex) {
     return (
-      <Row rowIndex={rowIndex} row={grid[rowIndex]} rowChanged={rowChanged}/>
+      <Row 
+        rowIndex={rowIndex} 
+        row={grid[rowIndex]} 
+        rowChanged={rowChanged} 
+        solution={solution[rowIndex]}
+      />
     )
   }
 

@@ -18,7 +18,11 @@ function App() {
         <h1>Play Sudoku</h1>
       </div>
       <div>
-        <Grid grid={grid} gridChanged={gridChanged}/>
+        <Grid 
+          grid={grid}
+          gridChanged={gridChanged} 
+          solution={solution}
+        />
       </div>
     </>
   )

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Cell from "./Cell"
 
-export default function Row({rowIndex, row, rowChanged}) {
+export default function Row({rowIndex, row, rowChanged, solution}) {
 
   function cellChanged(columnIndex, value) {
     const newRow = row.slice()
@@ -11,7 +11,12 @@ export default function Row({rowIndex, row, rowChanged}) {
 
   function newCell(columnIndex) {
     return (
-      <Cell columnIndex={columnIndex} value={row[columnIndex]} cellChanged={cellChanged}/>
+      <Cell 
+        columnIndex={columnIndex} 
+        value={row[columnIndex]} 
+        cellChanged={cellChanged} 
+        solution={solution[columnIndex]}
+      />
     )
   }
 

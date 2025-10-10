@@ -1,4 +1,4 @@
-export default function Cell({columnIndex, value, cellChanged}) {
+export default function Cell({columnIndex, value, cellChanged, solution}) {
   function isInputValid(newValue) {
     if (!Number.isInteger(newValue)) {
       return false
@@ -27,10 +27,21 @@ export default function Cell({columnIndex, value, cellChanged}) {
     inputBox.setSelectionRange(length, length)
   }
 
-  return (
+  if (value == solution) {
+    return (
       <input 
         type="text" 
-        className="cell"
+        className="cell fixed"
+        value={value || ""}
+        readOnly
+      />
+    )
+  } else
+  {
+    return (
+      <input 
+        type="text" 
+        className="cell editable"
         value={value || ""}
         onInput={e => handleInput(e.target)}
         onFocus={e => handleFocus(e.target)}
@@ -38,4 +49,5 @@ export default function Cell({columnIndex, value, cellChanged}) {
         onClick={e => handleFocus(e.target)}
       />
     )
+  }
 }

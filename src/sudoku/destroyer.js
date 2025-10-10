@@ -41,7 +41,7 @@ function destroyGrid(grid, attempts) {
 }
 
 function destroy(grid) {
-  return destroyGrid(grid, 9**2)
+  return destroyGrid(grid, 1)
 }
 
 export default destroy
