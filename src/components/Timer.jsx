@@ -1,4 +1,4 @@
-import formatTime from "../time/formatTime"
+import formatTime from "../util/formatTime"
 
 const PAUSE_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/3/34/Controls_pause.svg"
 const PLAY_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/0/06/Controls_play.svg"

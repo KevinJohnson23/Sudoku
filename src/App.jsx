@@ -3,11 +3,9 @@ import "./App.scss"
 import Grid from "./components/Grid"
 import CompletionScreen from "./components/CompletionScreen"
 import Timer from "./components/Timer"
-import generate from "./sudoku/generator"
-import destroy from "./sudoku/destroyer"
+import getDailySudoku from "./sudoku/dailySudoku"
 
-const solution = generate()
-const initial = destroy(solution)
+const [solution, initial] = getDailySudoku(2025, 10, 11)
 
 function App() {
   const [puzzle, setPuzzle] = useState({
@@ -25,8 +23,7 @@ function App() {
   }
 
   function newPuzzle() {
-    const newSolution = generate()
-    const newInitial = destroy(newSolution)
+    const [newSolution, newInitial] = getDailySudoku(2025, 10, 11)
     setPuzzle({
       solution: newSolution,
       grid: newInitial

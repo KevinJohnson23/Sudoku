@@ -1,4 +1,4 @@
-import formatTime from "../time/formatTime"
+import formatTime from "../util/formatTime"
 
 export default function CompletionScreen({ completed, newPuzzle, time }) {
   return completed ? (

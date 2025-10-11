@@ -14,20 +14,20 @@ function getBlock(grid, row, col) {
   return block
 }
 
-function getRandomCandidates() {
+function getRandomCandidates(rng) {
   const remainingCandidates = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   const randomCandidates = Array(9)
   for (let i = 0; i < 9; i++) {
-    const randomIndex = Math.floor(Math.random() * remainingCandidates.length)
+    const randomIndex = Math.floor(rng() * remainingCandidates.length)
     randomCandidates[i] = remainingCandidates.splice(randomIndex, 1)[0]
   }
   return randomCandidates
 }
 
-function getCandidates(grid, row, col) {
+function getCandidates(grid, row, col, rng) {
   const candidates = []
   const block = getBlock(grid, row, col)
-  const randomCandidates = getRandomCandidates()
+  const randomCandidates = getRandomCandidates(rng)
   for (let i of randomCandidates) {
     let isAllowed = block.indexOf(i) == -1
     if (isAllowed) {
