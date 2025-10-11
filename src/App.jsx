@@ -74,6 +74,8 @@ function App() {
     return () => clearInterval(interval)
   })
 
+  const monthShorthand = new Date(selectedDate.year, selectedDate.month).toLocaleString("default", { month: "short" })
+
   return (
     <>
       <CompletionScreen
@@ -87,7 +89,8 @@ function App() {
         newPuzzleFromDate={newPuzzleFromDate}
       />
       <div>
-        <h1>Play Sudoku</h1>
+        <h2>Play Sudoku</h2>
+        <h1>{`${monthShorthand} ${selectedDate.day}, ${selectedDate.year}`}</h1>
       </div>
       <Grid
         grid={puzzle.grid}
