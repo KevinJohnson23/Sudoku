@@ -42,6 +42,16 @@ function App() {
     })
     setTime(0)
     setPaused(false)
+    setSelectingPuzzle(false)
+  }
+
+  function newPuzzleFromDate(date) {
+    setSelectedDate({
+      year: date.year,
+      month: date.month,
+      day: date.day
+    })
+    newPuzzle()
   }
 
   let completed = true
@@ -73,8 +83,8 @@ function App() {
       />
       <SelectionScreen
         selectingPuzzle={selectingPuzzle}
-        setSelectingPuzzle={setSelectingPuzzle}
         selectedDate={selectedDate}
+        newPuzzleFromDate={newPuzzleFromDate}
       />
       <div>
         <h1>Play Sudoku</h1>

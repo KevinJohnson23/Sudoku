@@ -1,9 +1,6 @@
-import { useState } from "react"
 import Week from "./Week"
 
-export default function Calendar({ selectedDate }) {
-  const [date, setDate] = useState(selectedDate)
-
+export default function Calendar({ date, setDate }) {
   const d = new Date(date.year, date.month, date.day)
   const year = date.year
   const monthName = d.toLocaleString("default", { month: "long" })
