@@ -6,11 +6,17 @@
   user-select: none;
 }
 
-.centre {
+
+.centre-relative {
   top: 50%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
+}
+
+.centre {
+  @extend .centre-relative;
+  position: absolute;
 }
 
 .cell {
@@ -80,9 +86,8 @@
   text-align: center;
 }
 
-.play-again-button {
+.center-button {
   background-color: red;
-  @extend .centre;
 }
 
 .grid-overlay {

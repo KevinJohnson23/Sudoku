@@ -21,6 +21,7 @@ function App() {
     day: date.getDate()
   })
   const [selectingPuzzle, setSelectingPuzzle] = useState(false)
+  const [admiringPuzzle, setAdmiringPuzzle] = useState(false)
   const [time, setTime] = useState(0)
 
   function gridChanged(newGrid) {
@@ -43,6 +44,7 @@ function App() {
     setTime(0)
     setPaused(false)
     setSelectingPuzzle(false)
+    setAdmiringPuzzle(false)
   }
 
   function newPuzzleFromDate(date) {
@@ -65,7 +67,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (completed || paused || selectingPuzzle) {
+    if (completed || admiringPuzzle || paused || selectingPuzzle) {
       return
     }
     const interval = setInterval(() => {
@@ -76,18 +78,28 @@ function App() {
 
   const monthShorthand = new Date(selectedDate.year, selectedDate.month).toLocaleString("default", { month: "short" })
 
+  function startSelectingPuzzle() {
+    setAdmiringPuzzle(true)
+    setSelectingPuzzle(true)
+  }
+
   return (
     <>
-      <CompletionScreen
-        newPuzzle={newPuzzle}
-        completed={completed}
-        time={time}
-      />
-      <SelectionScreen
-        selectingPuzzle={selectingPuzzle}
-        selectedDate={selectedDate}
-        newPuzzleFromDate={newPuzzleFromDate}
-      />
+      {completed && !admiringPuzzle ?
+        <CompletionScreen
+          showScreen={completed && !admiringPuzzle}
+          setAdmiringPuzzle={setAdmiringPuzzle}
+          startSelectingPuzzle={startSelectingPuzzle}
+          time={time}
+        />
+        : null
+      }
+      {selectingPuzzle ?
+        <SelectionScreen
+          selectedDate={selectedDate}
+          newPuzzleFromDate={newPuzzleFromDate}
+        /> : null
+      }
       <div>
         <h2>Play Sudoku</h2>
         <h1>{`${monthShorthand} ${selectedDate.day}, ${selectedDate.year}`}</h1>
@@ -105,9 +117,6 @@ function App() {
           paused={paused}
           setPaused={() => { setPaused(!paused) }}
         />
-        <button onClick={newPuzzle}>
-          Generate Puzzle
-        </button>
         <button onClick={() => { setSelectingPuzzle(!selectingPuzzle) }}>
           Select Puzzle
         </button>

@@ -1,7 +1,7 @@
 import formatTime from "../util/formatTime"
 
-export default function CompletionScreen({ completed, newPuzzle, time }) {
-  return completed ? (
+export default function CompletionScreen({ setAdmiringPuzzle, startSelectingPuzzle, time }) {
+  return (
     <div className="overlay">
       <div className="center-overlay">
         <h1>
@@ -10,13 +10,17 @@ export default function CompletionScreen({ completed, newPuzzle, time }) {
         <p className="completion-text">
           You took {formatTime(time)} to finish
         </p>
-        <button
-          className="play-again-button"
-          onClick={newPuzzle}
-        >
-          New Puzzle
-        </button>
+        <div>
+          <button className="center-button" onClick={() => startSelectingPuzzle(true)}>
+            Play More Puzzles
+          </button>
+        </div>
+        <div>
+          <button className="center-button" onClick={() => setAdmiringPuzzle(true)}>
+            Admire Puzzle
+          </button>
+        </div>
       </div>
     </div>
-  ) : null
+  )
 }

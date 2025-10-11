@@ -1,10 +1,10 @@
 import { useState } from "react"
 import Calendar from "./Calendar"
 
-export default function SelectionScreen({ selectingPuzzle, selectedDate, newPuzzleFromDate }) {
+export default function SelectionScreen({ selectedDate, newPuzzleFromDate }) {
   const [date, setDate] = useState(selectedDate)
 
-  return selectingPuzzle ? (
+  return (
     <div className="overlay">
       <div className="center-overlay">
         <h1>
@@ -18,5 +18,5 @@ export default function SelectionScreen({ selectingPuzzle, selectedDate, newPuzz
         </div>
       </div>
     </div>
-  ) : null
+  )
 }
