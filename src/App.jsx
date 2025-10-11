@@ -15,14 +15,6 @@ function App() {
     grid: initial
   })
 
-  const [time, setTime] = useState(0)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(time + 1)
-    }, 1000)
-    return () => clearInterval(interval)
-  })
-
   function gridChanged(newGrid) {
     setPuzzle({
       solution: puzzle.solution,
@@ -49,6 +41,16 @@ function App() {
       }
     }
   }
+
+  const [time, setTime] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isComplete) {
+        setTime(time + 1)
+      }
+    }, 1000)
+    return () => clearInterval(interval)
+  })
 
   return (
     <>
