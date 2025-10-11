@@ -1,6 +1,7 @@
 import Row from "./Row"
+import PauseScreen from "./PauseScreen"
 
-export default function Grid({ grid, gridChanged, solution }) {
+export default function Grid({ grid, gridChanged, solution, paused, setPaused }) {
   function rowChanged(rowIndex, newRow) {
     const newGrid = grid.slice()
     newGrid[rowIndex] = newRow
@@ -19,16 +20,22 @@ export default function Grid({ grid, gridChanged, solution }) {
   }
 
   return (
-    <div className="grid">
-      {newRow(0)}
-      {newRow(1)}
-      {newRow(2)}
-      {newRow(3)}
-      {newRow(4)}
-      {newRow(5)}
-      {newRow(6)}
-      {newRow(7)}
-      {newRow(8)}
+    <div className="grid-container">
+      <div className="grid">
+        {newRow(0)}
+        {newRow(1)}
+        {newRow(2)}
+        {newRow(3)}
+        {newRow(4)}
+        {newRow(5)}
+        {newRow(6)}
+        {newRow(7)}
+        {newRow(8)}
+      </div>
+      <PauseScreen
+        paused={paused}
+        setPaused={setPaused}
+      />
     </div>
   )
 }

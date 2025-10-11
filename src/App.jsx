@@ -66,13 +66,13 @@ function App() {
       <div>
         <h1>Play Sudoku</h1>
       </div>
-      <div>
-        <Grid
-          grid={puzzle.grid}
-          gridChanged={gridChanged}
-          solution={puzzle.solution}
-        />
-      </div>
+      <Grid
+        grid={puzzle.grid}
+        gridChanged={gridChanged}
+        solution={puzzle.solution}
+        paused={paused}
+        setPaused={setPaused}
+      />
       <div>
         <Timer
           timeSeconds={time}

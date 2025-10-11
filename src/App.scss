@@ -83,3 +83,19 @@
   background-color: red;
   @extend .centre;
 }
+
+.grid-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  aspect-ratio: 1;
+  width: calc(min(1vmin, 1%) * var(--cell-size) * 9);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  text-align: center;
+  color: white;
+}
+
+.grid-container {
+  position: relative;
+}
