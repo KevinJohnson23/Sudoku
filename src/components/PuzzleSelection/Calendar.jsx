@@ -35,7 +35,7 @@ export default function Calendar({ date, setDate }) {
 
   return (
     <div>
-      <div>
+      <div className="month-selector">
         <button onClick={previousMonth}>&lt;</button>
         {monthName} {year}
         <button onClick={nextMonth}>&gt;</button>

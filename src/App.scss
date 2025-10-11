@@ -113,3 +113,9 @@
   background-color: #999999;
   visibility: hidden;
 }
+
+.month-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
