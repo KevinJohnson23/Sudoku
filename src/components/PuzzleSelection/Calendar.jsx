@@ -38,7 +38,7 @@ export default function Calendar({ date, setDate }) {
       const currentDate = new Date()
       newDay = currentDate.getDate()
     } else {
-      newDay = new Date(year, date.month, 0).getDate()
+      newDay = new Date(year, newMonth + 1, 0).getDate()
     }
     setDate({
       year: newYear,
