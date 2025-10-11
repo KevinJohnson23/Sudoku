@@ -116,6 +116,7 @@ function App() {
           timeSeconds={time}
           paused={paused}
           setPaused={() => { setPaused(!paused) }}
+          hidePause={admiringPuzzle || completed}
         />
         <button onClick={() => { setSelectingPuzzle(!selectingPuzzle) }}>
           Select Puzzle
