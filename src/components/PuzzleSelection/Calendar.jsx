@@ -4,6 +4,7 @@ export default function Calendar({ date, setDate }) {
   const d = new Date(date.year, date.month, date.day)
   const year = date.year
   const monthName = d.toLocaleString("default", { month: "long" })
+  const maxDate = new Date()
 
   function previousMonth() {
     let newMonth = date.month - 1
@@ -33,12 +34,14 @@ export default function Calendar({ date, setDate }) {
     })
   }
 
+  const hideNextMonthButton = date.month == maxDate.getMonth() && date.year == maxDate.getFullYear()
+
   return (
     <div>
       <div className="month-selector">
         <button onClick={previousMonth}>&lt;</button>
         {monthName} {year}
-        <button onClick={nextMonth}>&gt;</button>
+        {<button onClick={nextMonth} style={{ visibility: hideNextMonthButton ? "hidden" : "visible" }}>&gt;</button>}
       </div>
       <table>
         <thead>
