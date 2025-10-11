@@ -56,11 +56,11 @@ export default function Calendar({ selectedDate }) {
           </tr>
         </thead>
         <tbody>
-          <tr><Week year={date.year} month={date.month} row={0} /></tr>
-          <tr><Week year={date.year} month={date.month} row={1} /></tr>
-          <tr><Week year={date.year} month={date.month} row={2} /></tr>
-          <tr><Week year={date.year} month={date.month} row={3} /></tr>
-          <tr><Week year={date.year} month={date.month} row={4} /></tr>
+          <tr><Week year={date.year} month={date.month} row={0} setDate={setDate} /></tr>
+          <tr><Week year={date.year} month={date.month} row={1} setDate={setDate} /></tr>
+          <tr><Week year={date.year} month={date.month} row={2} setDate={setDate} /></tr>
+          <tr><Week year={date.year} month={date.month} row={3} setDate={setDate} /></tr>
+          <tr><Week year={date.year} month={date.month} row={4} setDate={setDate} /></tr>
         </tbody>
       </table>
     </div>
