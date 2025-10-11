@@ -32,6 +32,7 @@ function App() {
       grid: newInitial
     })
     setTime(0)
+    setPaused(false)
   }
 
   let completed = true
