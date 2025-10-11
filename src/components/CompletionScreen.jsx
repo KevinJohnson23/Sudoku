@@ -1,7 +1,7 @@
 import formatTime from "../time/formatTime"
 
-export default function CompletionScreen({ isComplete, newPuzzle, time }) {
-  return isComplete ? (
+export default function CompletionScreen({ completed, newPuzzle, time }) {
+  return completed ? (
     <div className="overlay">
       <div className="center-overlay">
         <h1>

@@ -15,6 +15,8 @@ function App() {
     grid: initial
   })
 
+  const [paused, setPaused] = useState(false)
+
   function gridChanged(newGrid) {
     setPuzzle({
       solution: puzzle.solution,
@@ -32,11 +34,11 @@ function App() {
     setTime(0)
   }
 
-  let isComplete = true
+  let completed = true
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
       if (puzzle.grid[row][col] != puzzle.solution[row][col]) {
-        isComplete = false
+        completed = false
         break
       }
     }
@@ -44,10 +46,11 @@ function App() {
 
   const [time, setTime] = useState(0)
   useEffect(() => {
+    if (completed || paused) {
+      return
+    }
     const interval = setInterval(() => {
-      if (!isComplete) {
-        setTime(time + 1)
-      }
+      setTime(prevTime => prevTime + 1)
     }, 1000)
     return () => clearInterval(interval)
   })
@@ -56,7 +59,7 @@ function App() {
     <>
       <CompletionScreen
         newPuzzle={newPuzzle}
-        isComplete={isComplete}
+        completed={completed}
         time={time}
       />
       <div>
@@ -72,6 +75,8 @@ function App() {
       <div>
         <Timer
           timeSeconds={time}
+          paused={paused}
+          setPaused={() => { setPaused(!paused) }}
         />
         <button onClick={newPuzzle}>
           Generate Puzzle
