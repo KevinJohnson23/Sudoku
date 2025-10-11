@@ -100,3 +100,15 @@
 .grid-container {
   position: relative;
 }
+
+.day-button {
+  background-color: #eeeeee;
+}
+
+.day-button.selected {
+  background-color: #78d1cd;
+}
+
+.day-button.other-month {
+  background-color: #999999;
+}

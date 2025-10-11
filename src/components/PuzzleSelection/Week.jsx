@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Week({ date, row, setDate }) {
+export default function Week({ date, setDate, row }) {
 
   const year = date.year
   const month = date.month
@@ -45,15 +45,30 @@ export default function Week({ date, row, setDate }) {
   return (
     <>
       {
-        Array(7).fill(0).map((_, i) => (
-          <td key={i}><button onClick={() => setDay(dayNum + i + 1)}>{
-            dayNum + i < 0 ?
-              prevLastDay + i - firstDay + 2 - offset
-              : dayNum + i >= lastDay ?
-                dayNum + i - lastDay + 1
-                : dayNum + i + 1
-          }</button></td>
-        ))
+        Array(7).fill(0).map((_, i) => {
+          const currentDayNum = dayNum + i
+          let displayDayNum = currentDayNum + 1
+          let buttonClass = "day-button"
+          if (currentDayNum < 0) {
+            displayDayNum = prevLastDay + i - firstDay + 2 - offset
+            buttonClass += " other-month"
+          } else if (currentDayNum >= lastDay) {
+            displayDayNum = dayNum + i - lastDay + 1
+            buttonClass += " other-month"
+          } else if (currentDayNum + 1 == date.day) {
+            buttonClass += " selected"
+          }
+          return (
+            <td key={i}>
+              <button
+                className={buttonClass}
+                onClick={() => setDay(dayNum + i + 1)}
+              >
+                {displayDayNum}
+              </button>
+            </td>
+          )
+        })
       }
     </>
   )
