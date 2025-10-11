@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 export default function CompletionScreen({ isComplete, newPuzzle }) {
   return isComplete ? (
     <div className="overlay">

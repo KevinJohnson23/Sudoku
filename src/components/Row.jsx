@@ -1,4 +1,3 @@
-import { useState } from "react"
 import Cell from "./Cell"
 
 export default function Row({ rowIndex, row, rowChanged, solution }) {

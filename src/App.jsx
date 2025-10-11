@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./App.scss"
 import Grid from "./components/Grid"
 import CompletionScreen from "./components/CompletionScreen"
+import Timer from "./components/Timer"
 import generate from "./sudoku/generator"
 import destroy from "./sudoku/destroyer"
 
@@ -12,6 +13,14 @@ function App() {
   const [puzzle, setPuzzle] = useState({
     solution: solution,
     grid: initial
+  })
+
+  const [time, setTime] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(time + 1)
+    }, 1000)
+    return () => clearInterval(interval)
   })
 
   function gridChanged(newGrid) {
@@ -28,6 +37,7 @@ function App() {
       solution: newSolution,
       grid: newInitial
     })
+    setTime(0)
   }
 
   let isComplete = true
@@ -57,6 +67,9 @@ function App() {
         />
       </div>
       <div>
+        <Timer
+          timeSeconds={time}
+        />
         <button onClick={newPuzzle}>
           Generate Puzzle
         </button>
