@@ -3,7 +3,7 @@ import Week from "./Week"
 
 export default function Calendar({ selectedDate }) {
   const [date, setDate] = useState(selectedDate)
-
+  console.log(date)
   const d = new Date(date.year, date.month, date.day)
   const year = date.year
   const monthName = d.toLocaleString("default", { month: "long" })
@@ -18,7 +18,7 @@ export default function Calendar({ selectedDate }) {
     setDate({
       year: newYear,
       month: newMonth,
-      day: date.day
+      day: new Date(year, date.month, 0).getDate()
     })
   }
 
@@ -32,7 +32,7 @@ export default function Calendar({ selectedDate }) {
     setDate({
       year: newYear,
       month: newMonth,
-      day: date.day
+      day: 1
     })
   }
 
@@ -56,11 +56,12 @@ export default function Calendar({ selectedDate }) {
           </tr>
         </thead>
         <tbody>
-          <tr><Week year={date.year} month={date.month} row={0} setDate={setDate} /></tr>
-          <tr><Week year={date.year} month={date.month} row={1} setDate={setDate} /></tr>
-          <tr><Week year={date.year} month={date.month} row={2} setDate={setDate} /></tr>
-          <tr><Week year={date.year} month={date.month} row={3} setDate={setDate} /></tr>
-          <tr><Week year={date.year} month={date.month} row={4} setDate={setDate} /></tr>
+          <tr><Week date={date} row={0} setDate={setDate} /></tr>
+          <tr><Week date={date} row={1} setDate={setDate} /></tr>
+          <tr><Week date={date} row={2} setDate={setDate} /></tr>
+          <tr><Week date={date} row={3} setDate={setDate} /></tr>
+          <tr><Week date={date} row={4} setDate={setDate} /></tr>
+          <tr><Week date={date} row={5} setDate={setDate} /></tr>
         </tbody>
       </table>
     </div>
