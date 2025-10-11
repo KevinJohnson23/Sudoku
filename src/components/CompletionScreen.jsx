@@ -1,3 +1,5 @@
+import formatTime from "../time/formatTime"
+
 export default function CompletionScreen({ isComplete, newPuzzle, time }) {
   return isComplete ? (
     <div className="overlay">
@@ -6,7 +8,7 @@ export default function CompletionScreen({ isComplete, newPuzzle, time }) {
           Puzzle Complete!
         </h1>
         <p className="completion-text">
-          You took {time} to finish
+          You took {formatTime(time)} to finish
         </p>
         <button
           className="play-again-button"
