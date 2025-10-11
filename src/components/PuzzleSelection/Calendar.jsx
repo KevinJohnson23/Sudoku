@@ -9,6 +9,7 @@ export default function Calendar({ date, setDate }) {
   const d = new Date(date.year, date.month, date.day)
   const year = date.year
   const monthName = d.toLocaleString("default", { month: "long" })
+  const isCurrentMonthSelected = isCurrentMonth(date.year, date.month)
 
   function previousMonth() {
     let newMonth = date.month - 1
@@ -46,12 +47,25 @@ export default function Calendar({ date, setDate }) {
     })
   }
 
+  function newWeek(row) {
+    return (
+      <tr>
+        <Week
+          date={date}
+          setDate={setDate}
+          row={row}
+          maxDate={isCurrentMonthSelected ? new Date().getDate() : null}
+        />
+      </tr>
+    )
+  }
+
   return (
     <div>
       <div className="month-selector">
         <button onClick={previousMonth}>&lt;</button>
         {monthName} {year}
-        {<button onClick={nextMonth} style={{ visibility: isCurrentMonth(date.year, date.month) ? "hidden" : "visible" }}>&gt;</button>}
+        {<button onClick={nextMonth} style={{ visibility: isCurrentMonthSelected ? "hidden" : "visible" }}>&gt;</button>}
       </div>
       <table>
         <thead>
@@ -66,12 +80,12 @@ export default function Calendar({ date, setDate }) {
           </tr>
         </thead>
         <tbody>
-          <tr><Week date={date} setDate={setDate} row={0} /></tr>
-          <tr><Week date={date} setDate={setDate} row={1} /></tr>
-          <tr><Week date={date} setDate={setDate} row={2} /></tr>
-          <tr><Week date={date} setDate={setDate} row={3} /></tr>
-          <tr><Week date={date} setDate={setDate} row={4} /></tr>
-          <tr><Week date={date} setDate={setDate} row={5} /></tr>
+          {newWeek(0)}
+          {newWeek(1)}
+          {newWeek(2)}
+          {newWeek(3)}
+          {newWeek(4)}
+          {newWeek(5)}
         </tbody>
       </table>
     </div>

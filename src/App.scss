@@ -110,8 +110,11 @@
 }
 
 .day-button.other-month {
-  background-color: #999999;
   visibility: hidden;
+}
+
+.day-button.future-day {
+  background-color: #999999;
 }
 
 .month-selector {
