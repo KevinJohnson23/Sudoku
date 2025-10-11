@@ -1,10 +1,14 @@
 import Week from "./Week"
 
+function isCurrentMonth(year, month) {
+  const currentDate = new Date()
+  return month == currentDate.getMonth() && year == currentDate.getFullYear()
+}
+
 export default function Calendar({ date, setDate }) {
   const d = new Date(date.year, date.month, date.day)
   const year = date.year
   const monthName = d.toLocaleString("default", { month: "long" })
-  const maxDate = new Date()
 
   function previousMonth() {
     let newMonth = date.month - 1
@@ -13,10 +17,11 @@ export default function Calendar({ date, setDate }) {
       newMonth += 12
       newYear -= 1
     }
+    let newDay = new Date(year, date.month, 0).getDate()
     setDate({
       year: newYear,
       month: newMonth,
-      day: new Date(year, date.month, 0).getDate()
+      day: newDay
     })
   }
 
@@ -27,21 +32,26 @@ export default function Calendar({ date, setDate }) {
       newMonth -= 12
       newYear += 1
     }
+    let newDay = null
+    if (isCurrentMonth(newYear, newMonth)) {
+      const currentDate = new Date()
+      newDay = currentDate.getDate()
+    } else {
+      newDay = new Date(year, date.month, 0).getDate()
+    }
     setDate({
       year: newYear,
       month: newMonth,
-      day: 1
+      day: newDay
     })
   }
-
-  const hideNextMonthButton = date.month == maxDate.getMonth() && date.year == maxDate.getFullYear()
 
   return (
     <div>
       <div className="month-selector">
         <button onClick={previousMonth}>&lt;</button>
         {monthName} {year}
-        {<button onClick={nextMonth} style={{ visibility: hideNextMonthButton ? "hidden" : "visible" }}>&gt;</button>}
+        {<button onClick={nextMonth} style={{ visibility: isCurrentMonth(date.year, date.month) ? "hidden" : "visible" }}>&gt;</button>}
       </div>
       <table>
         <thead>
