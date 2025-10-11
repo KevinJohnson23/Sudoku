@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Week from "./Week"
 
 export default function Calendar({ selectedDate }) {
   const [date, setDate] = useState(selectedDate)
@@ -42,6 +43,26 @@ export default function Calendar({ selectedDate }) {
         {monthName} {year}
         <button onClick={nextMonth}>&gt;</button>
       </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><Week year={date.year} month={date.month} row={0} /></tr>
+          <tr><Week year={date.year} month={date.month} row={1} /></tr>
+          <tr><Week year={date.year} month={date.month} row={2} /></tr>
+          <tr><Week year={date.year} month={date.month} row={3} /></tr>
+          <tr><Week year={date.year} month={date.month} row={4} /></tr>
+        </tbody>
+      </table>
     </div>
   )
 }

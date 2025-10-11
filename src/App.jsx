@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import "./App.scss"
-import Grid from "./components/Grid"
+import Grid from "./components/Grid/Grid"
 import CompletionScreen from "./components/CompletionScreen"
-import SelectionScreen from "./components/SelectionScreen"
+import SelectionScreen from "./components/PuzzleSelection/SelectionScreen"
 import Timer from "./components/Timer"
 import getDailySudoku from "./sudoku/dailySudoku"
 
