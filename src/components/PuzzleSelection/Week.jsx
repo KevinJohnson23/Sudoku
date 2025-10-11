@@ -34,7 +34,6 @@ export default function Week({ date, setDate, row, maxDate }) {
       }
       newDay += prevLastDay
     }
-
     setDate({
       year: newYear,
       month: newMonth,

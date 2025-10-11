@@ -100,9 +100,17 @@ function App() {
           newPuzzleFromDate={newPuzzleFromDate}
         /> : null
       }
-      <div>
-        <h2>Play Sudoku</h2>
-        <h1>{`${monthShorthand} ${selectedDate.day}, ${selectedDate.year}`}</h1>
+      <div className="header">
+        <div>
+          <h2>Sudoku</h2>
+          <h1>{`${monthShorthand} ${selectedDate.day}, ${selectedDate.year}`}</h1>
+        </div>
+        <Timer
+          timeSeconds={time}
+          paused={paused}
+          setPaused={() => { setPaused(!paused) }}
+          hidePause={admiringPuzzle || completed}
+        />
       </div>
       <Grid
         grid={puzzle.grid}
@@ -112,12 +120,6 @@ function App() {
         setPaused={setPaused}
       />
       <div>
-        <Timer
-          timeSeconds={time}
-          paused={paused}
-          setPaused={() => { setPaused(!paused) }}
-          hidePause={admiringPuzzle || completed}
-        />
         <button onClick={() => { setSelectingPuzzle(!selectingPuzzle) }}>
           Select Puzzle
         </button>

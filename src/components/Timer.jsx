@@ -5,13 +5,13 @@ const PLAY_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/0/06/Controls
 
 export default function Timer({ timeSeconds, paused, setPaused, hidePause }) {
   return (
-    <div>
-      Time: {formatTime(timeSeconds)}
+    <div className="timer-container">
       {
         !hidePause ?
-          <button onClick={setPaused}><img src={paused ? PLAY_IMAGE : PAUSE_IMAGE} /></button>
+          <button className="pause-button" onClick={setPaused}><img src={paused ? PLAY_IMAGE : PAUSE_IMAGE} /></button>
           : null
       }
+      <h2 className="timer-text">{formatTime(timeSeconds)}</h2>
     </div>
   )
 }

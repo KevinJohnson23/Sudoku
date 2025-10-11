@@ -1,7 +1,7 @@
 import copyGrid from "./util/copyGrid"
 import getCandidates from "./util/getCandidates"
 
-const ATTEMPTS = 1//9**2
+const ATTEMPTS = 9 ** 2
 
 function getSolutions(grid, rng) {
   for (let row = 0; row < 9; row++) {
@@ -13,7 +13,7 @@ function getSolutions(grid, rng) {
       for (let candidate of getCandidates(grid, row, col, rng)) {
         const newGrid = copyGrid(grid)
         newGrid[row][col] = candidate
-        const newSolutions = getSolutions(newGrid)
+        const newSolutions = getSolutions(newGrid, rng)
         solutions = solutions.concat(newSolutions)
       }
       return solutions

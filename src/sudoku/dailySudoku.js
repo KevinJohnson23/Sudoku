@@ -3,7 +3,7 @@ import destroy from "./destroyer"
 import random from "../util/random"
 
 function getSeed(year, month, day) {
-  return year * 1e4 + month * 1e2 + day
+  return (year * 1e4 + month * 1e2 + day) ** 2
 }
 
 function getRNG(year, month, day) {

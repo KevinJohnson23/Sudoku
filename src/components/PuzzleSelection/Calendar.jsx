@@ -67,7 +67,7 @@ export default function Calendar({ date, setDate }) {
         {monthName} {year}
         {<button onClick={nextMonth} style={{ visibility: isCurrentMonthSelected ? "hidden" : "visible" }}>&gt;</button>}
       </div>
-      <table>
+      <table className="day-selector">
         <thead>
           <tr>
             <th>Mon</th>
