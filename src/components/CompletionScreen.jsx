@@ -1,4 +1,4 @@
-export default function CompletionScreen({ isComplete, newPuzzle }) {
+export default function CompletionScreen({ isComplete, newPuzzle, time }) {
   return isComplete ? (
     <div className="overlay">
       <div className="center-overlay">
@@ -6,7 +6,7 @@ export default function CompletionScreen({ isComplete, newPuzzle }) {
           Puzzle Complete!
         </h1>
         <p className="completion-text">
-          You took hh:mm:ss to finish
+          You took {time} to finish
         </p>
         <button
           className="play-again-button"

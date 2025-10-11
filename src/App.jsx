@@ -57,6 +57,7 @@ function App() {
       <CompletionScreen
         newPuzzle={newPuzzle}
         isComplete={isComplete}
+        time={time}
       />
       <div>
         <h1>Play Sudoku</h1>
