@@ -2,23 +2,6 @@ import { useState } from "react"
 
 export default function Week({ year, month, row, setDate }) {
 
-  // function selectDay(day) {
-  //   const lastDay = new Date(year, month + 1, 0).getDate()
-  //   if (day > lastDay) {
-  //     let newMonth = date.month + 1
-  //     let newYear = date.year
-  //     if (newMonth > 11) {
-
-  //     }
-  //   } else {
-  //     setDate({
-  //       year: year,
-  //       month: month,
-  //       day: day
-  //     })
-  //   }
-  // }
-
   const firstDay = new Date(year, month, 1).getDay()
   const lastDay = new Date(year, month + 1, 0).getDate()
   const prevLastDay = new Date(year, month, 0).getDate()
