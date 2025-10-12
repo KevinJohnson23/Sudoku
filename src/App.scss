@@ -2,6 +2,7 @@
   --cell-size: 8;
   --normal-border_width: 1px;
   --bold-border_width: 2px;
+  --border-radius: 10px;
   background-color: #f8f9fb;
   user-select: none;
   font-family: Helvetica;
@@ -83,7 +84,7 @@ h2 {
   aspect-ratio: 1;
   width: calc(1vmin * var(--cell-size) * 9);
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 1.2%;
+  border-radius: var(--border-radius);
 }
 
 .cell::selection {
@@ -122,7 +123,7 @@ h2 {
   height: 50%;
   aspect-ratio: 1;
   text-align: center;
-  border-radius: 5%;
+  border-radius: var(--border-radius);
 }
 
 .center-button {
@@ -134,14 +135,28 @@ h2 {
   position: absolute;
   aspect-ratio: 1;
   width: calc(1vmin * var(--cell-size) * 9);
-  border-radius: 1.2%;
-  z-index: 100;
+  border-radius: var(--border-radius);
+  z-index: 1;
   color: white;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition-duration: 0.2s;
+}
+
+.grid-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.grid-overlay:hover>* {
+  transition-duration: 0.5s;
+  transform: scale(110%);
+}
+
+.grid-overlay:not(:hover)>* {
+  transition-duration: 0.2s;
 }
 
 .grid-overlay-contents {
@@ -190,8 +205,6 @@ h2 {
   align-items: center;
 }
 
-.day-selector {}
-
 .header {
   width: calc(1vmin * var(--cell-size) * 9);
   justify-content: space-between;
@@ -200,16 +213,57 @@ h2 {
   margin: 0px auto;
 }
 
+.timer-container {
+  display: flexbox;
+  margin-top: 4.2vmin;
+}
+
 .timer-text {
-  margin-right: 20px;
-  margin-top: 6.5vmin;
   display: inline-block;
 }
 
 .pause-button {
-  transform: scale(65%) translate(0%, 29%);
-  background-color: rgba(0, 0, 0, 0);
+  width: 2.7vmin;
+  height: 2.7vmin;
+  aspect-ratio: 1;
+  padding: 0px;
+  margin-right: 1vmin;
+  transform: translate(0, 0.4vmin);
   outline: none;
   border: none;
   cursor: pointer;
+  background: none;
+}
+
+.pause-button:hover>img {
+  transform: scale(110%);
+}
+
+.pause-button>img {
+  transition-duration: 0.2s;
+  width: 100%;
+}
+
+.footer {
+  @extend .header;
+  justify-content: right;
+  margin-top: 3vmin;
+}
+
+.select-puzzle-button {
+  width: 25%;
+  height: 5vmin;
+  border-radius: var(--border-radius);
+  outline: none;
+  border: none;
+  background-color: black;
+  color: white;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 2vmin;
+  transition-duration: 0.2s;
+}
+
+.select-puzzle-button:hover {
+  transform: scale(105%);
 }

@@ -119,8 +119,11 @@ function App() {
         paused={paused}
         setPaused={setPaused}
       />
-      <div>
-        <button onClick={() => { setSelectingPuzzle(!selectingPuzzle) }}>
+      <div className="footer">
+        <button
+          className="select-puzzle-button"
+          onClick={() => { setSelectingPuzzle(!selectingPuzzle) }}
+        >
           Select Puzzle
         </button>
       </div>
