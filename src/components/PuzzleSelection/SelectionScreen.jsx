@@ -14,7 +14,7 @@ export default function SelectionScreen({ setSelectingPuzzle, selectedDate, newP
           <div className="calendar-container">
             <Calendar date={date} setDate={setDate} />
           </div>
-          <div className="calendar-button-container">
+          <div className="center-button-container">
             <button onClick={() => { newPuzzleFromDate(date) }}>Select</button>
           </div>
         </div>

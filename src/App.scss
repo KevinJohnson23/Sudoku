@@ -353,7 +353,7 @@ h2 {
   font-size: 1.3vmin;
 }
 
-.calendar-button-container {
+.center-button-container {
   margin-top: 1vmin;
   height: 8%;
   justify-content: right;
@@ -361,7 +361,7 @@ h2 {
   transform: translate(0, -40%);
 }
 
-.calendar-button-container>button {
+.center-button-container>button {
   border-radius: var(--border-radius);
   outline: none;
   border: none;
@@ -372,8 +372,30 @@ h2 {
   height: 100%;
   width: 40%;
   transition-duration: 0.2s;
+  font-size: 1.8vmin;
 }
 
-.calendar-button-container>button:hover {
+.center-button-container>button:hover {
   background-color: var(--black-hover);
+}
+
+.center-contents>p {
+  font-size: 2.5vmin;
+}
+
+.completion-screen-buttons {
+  width: 100%;
+  height: 68%;
+  margin-top: 5vmin;
+}
+
+.completion-screen-buttons>.center-button-container {
+  justify-content: center;
+  margin-top: 2.5%;
+  height: 15%;
+  width: 100%;
+}
+
+.completion-screen-buttons>.center-button-container>button {
+  width: 50%;
 }
