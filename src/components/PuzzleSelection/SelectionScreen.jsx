@@ -7,14 +7,16 @@ export default function SelectionScreen({ setSelectingPuzzle, selectedDate, newP
   return (
     <div className="overlay" onClick={() => setSelectingPuzzle(false)}>
       <div className="center-overlay" onClick={(e) => e.stopPropagation()}>
-        <h1>
-          Select a Puzzle
-        </h1>
-        <div>
-          <Calendar date={date} setDate={setDate} />
-        </div>
-        <div>
-          <button onClick={() => { newPuzzleFromDate(date) }}>Play</button>
+        <div className="center-contents">
+          <h1>
+            Select Puzzle
+          </h1>
+          <div className="calendar-container">
+            <Calendar date={date} setDate={setDate} />
+          </div>
+          <div className="calendar-button-container">
+            <button onClick={() => { newPuzzleFromDate(date) }}>Select</button>
+          </div>
         </div>
       </div>
     </div>

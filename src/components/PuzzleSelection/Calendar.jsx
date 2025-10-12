@@ -1,5 +1,8 @@
 import Week from "./Week"
 
+const LT = "https://upload.wikimedia.org/wikipedia/commons/8/8f/U%2B25C0.svg"
+const GT = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/U%2B25B6.svg/180px-U%2B25B6.svg.png?20170228072111"
+
 function isCurrentMonth(year, month) {
   const currentDate = new Date()
   return month == currentDate.getMonth() && year == currentDate.getFullYear()
@@ -61,11 +64,11 @@ export default function Calendar({ date, setDate }) {
   }
 
   return (
-    <div>
+    <div className="calendar">
       <div className="month-selector">
-        <button onClick={previousMonth}>&lt;</button>
+        <button onClick={previousMonth} className="enabled"><img src={LT} /></button>
         {monthName} {year}
-        {<button onClick={nextMonth} style={{ visibility: isCurrentMonthSelected ? "hidden" : "visible" }}>&gt;</button>}
+        {<button onClick={isCurrentMonthSelected ? null : nextMonth} className={isCurrentMonthSelected ? "disabled" : "enabled"}><img src={GT} /></button>}
       </div>
       <table className="day-selector">
         <thead>

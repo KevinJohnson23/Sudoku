@@ -3,6 +3,7 @@
   --normal-border_width: 1px;
   --bold-border_width: 2px;
   --border-radius: 10px;
+  --black-hover: #222222;
   background-color: #f8f9fb;
   user-select: none;
   font-family: Helvetica;
@@ -126,9 +127,32 @@ h2 {
   opacity: 1;
   @extend .center;
   height: 50%;
-  aspect-ratio: 1;
-  text-align: center;
+  aspect-ratio: 0.8;
   border-radius: var(--border-radius);
+  box-shadow: 0px 5px 100px rgba(0, 0, 0, 0.2);
+}
+
+.center-contents {
+  width: 80%;
+  height: 83%;
+  text-align: center;
+  @extend .center;
+}
+
+.center-contents>h1 {
+  height: 12%;
+  margin-top: 0;
+  margin-bottom: 1vmin;
+}
+
+.calendar-container {
+  width: 100%;
+  height: 81%;
+}
+
+.calendar {
+  width: 100%;
+  height: 100%;
 }
 
 .center-button {
@@ -183,31 +207,6 @@ h2 {
   position: relative;
   display: flex;
   justify-content: center;
-}
-
-.day-button {
-  background-color: #eeeeee;
-  aspect-ratio: 1;
-  width: 100%;
-  height: 100%;
-}
-
-.day-button.selected {
-  background-color: #78d1cd;
-}
-
-.day-button.other-month {
-  visibility: hidden;
-}
-
-.day-button.future-day {
-  background-color: #999999;
-}
-
-.month-selector {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .header {
@@ -270,5 +269,111 @@ h2 {
 }
 
 .select-puzzle-button:hover {
-  transform: scale(105%);
+  background-color: var(--black-hover);
+}
+
+.day-button {
+  background-color: #eeeeee;
+  aspect-ratio: 1;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 100%;
+  font-size: 1.5vmin;
+}
+
+.day-button:hover {
+  background-color: #dddddd;
+  transition-duration: 0.2s;
+}
+
+.day-button.selected {
+  background-color: black;
+  color: white;
+}
+
+.day-button.selected:hover {
+  background-color: var(--black-hover);
+  transition-duration: 0.2s;
+}
+
+.day-button.other-month {
+  visibility: hidden;
+}
+
+.day-button.future-day {
+  background: none;
+  opacity: 0.3;
+  cursor: default;
+}
+
+.month-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.2vmin;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  height: 10%;
+}
+
+.month-selector>button {
+  background: none;
+  aspect-ratio: 1;
+  height: 70%;
+  outline: none;
+  border: none;
+}
+
+.month-selector>button.disabled {
+  opacity: 0.2;
+}
+
+.month-selector>button.enabled {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.month-selector>button.enabled:hover {
+  transform: scale(110%);
+}
+
+.month-selector>button>img {
+  height: 100%;
+}
+
+.day-selector {
+  width: 100%;
+}
+
+.day-selector>thead {
+  opacity: 0.5;
+  font-size: 1.3vmin;
+}
+
+.calendar-button-container {
+  margin-top: 1vmin;
+  height: 8%;
+  justify-content: right;
+  display: flex;
+  transform: translate(0, -40%);
+}
+
+.calendar-button-container>button {
+  border-radius: var(--border-radius);
+  outline: none;
+  border: none;
+  background-color: black;
+  color: white;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  height: 100%;
+  width: 40%;
+  transition-duration: 0.2s;
+}
+
+.calendar-button-container>button:hover {
+  background-color: var(--black-hover);
 }
