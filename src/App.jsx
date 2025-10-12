@@ -96,6 +96,7 @@ function App() {
       }
       {selectingPuzzle ?
         <SelectionScreen
+          setSelectingPuzzle={setSelectingPuzzle}
           selectedDate={selectedDate}
           newPuzzleFromDate={newPuzzleFromDate}
         /> : null

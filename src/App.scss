@@ -114,6 +114,11 @@ h2 {
   top: 0px;
   left: 0px;
   z-index: 100;
+  cursor: pointer;
+}
+
+.overlay>* {
+  cursor: default;
 }
 
 .center-overlay {

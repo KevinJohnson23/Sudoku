@@ -2,8 +2,8 @@ import formatTime from "../util/formatTime"
 
 export default function CompletionScreen({ setAdmiringPuzzle, startSelectingPuzzle, time }) {
   return (
-    <div className="overlay">
-      <div className="center-overlay">
+    <div className="overlay" onClick={() => setSelectingPuzzle(false)}>
+      <div className="center-overlay" onClick={(e) => e.stopPropagation()}>
         <h1>
           Puzzle Complete!
         </h1>
