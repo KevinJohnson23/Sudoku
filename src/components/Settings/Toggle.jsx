@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Toggle({ initialState, setSetting, title }) {
+export default function Toggle({ initialState, setSetting, title, subtitle }) {
   const [state, setState] = useState(initialState)
 
   function toggleState() {
@@ -10,7 +10,10 @@ export default function Toggle({ initialState, setSetting, title }) {
 
   return (
     <div className={"toggle " + (state ? "on" : "off")}>
-      <span>{title}</span>
+      <span>
+        <p>{title}</p>
+        <p>{subtitle}</p>
+      </span>
       <div className="switch">
         <div className="track" onClick={toggleState}>
           <div className="thumb" />

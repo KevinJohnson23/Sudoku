@@ -1,6 +1,6 @@
 import Cell from "./Cell"
 
-export default function Row({ rowIndex, row, rowChanged, initial, solution, autoCheck }) {
+export default function Row({ rowIndex, row, rowChanged, initial, solution, autoCheck, showIncorrect, completed, filled }) {
 
   function cellChanged(columnIndex, value) {
     const newRow = row.slice()
@@ -17,6 +17,9 @@ export default function Row({ rowIndex, row, rowChanged, initial, solution, auto
         initial={initial[columnIndex]}
         solution={solution[columnIndex]}
         autoCheck={autoCheck}
+        showIncorrect={showIncorrect}
+        completed={completed}
+        filled={filled}
       />
     )
   }

@@ -1,7 +1,7 @@
 import Row from "./Row"
 import PauseScreen from "./PauseScreen"
 
-export default function Grid({ grid, gridChanged, initial, solution, paused, setPaused, autoCheck }) {
+export default function Grid({ grid, gridChanged, initial, solution, paused, setPaused, autoCheck, showIncorrect, completed, filled }) {
   function rowChanged(rowIndex, newRow) {
     const newGrid = grid.slice()
     newGrid[rowIndex] = newRow
@@ -17,6 +17,9 @@ export default function Grid({ grid, gridChanged, initial, solution, paused, set
         initial={initial[rowIndex]}
         solution={solution[rowIndex]}
         autoCheck={autoCheck}
+        showIncorrect={showIncorrect}
+        completed={completed}
+        filled={filled}
       />
     )
   }

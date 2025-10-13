@@ -31,6 +31,7 @@ function App() {
   const [settings, setSettings] = useState({
     showTimer: true,
     autoCheck: false,
+    showIncorrect: true,
   })
 
   function gridChanged(newGrid) {
@@ -159,6 +160,9 @@ function App() {
         paused={paused}
         setPaused={setPaused}
         autoCheck={settings.autoCheck}
+        showIncorrect={settings.showIncorrect}
+        completed={completed}
+        filled={filled}
       />
       <div className="footer">
         <button

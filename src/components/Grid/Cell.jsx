@@ -1,4 +1,4 @@
-export default function Cell({ columnIndex, value, cellChanged, initial, solution, autoCheck }) {
+export default function Cell({ columnIndex, value, cellChanged, initial, solution, autoCheck, showIncorrect, completed, filled }) {
   function isInputValid(newValue) {
     if (!Number.isInteger(newValue)) {
       return false
@@ -27,7 +27,7 @@ export default function Cell({ columnIndex, value, cellChanged, initial, solutio
     inputBox.setSelectionRange(length, length)
   }
 
-  if (value == solution && (initial || autoCheck)) {
+  if (completed || value == solution && (initial || autoCheck)) {
     return (
       <div className={"cell-wrapper " + (initial ? "fixed" : "correct")} >
         <input
@@ -50,7 +50,7 @@ export default function Cell({ columnIndex, value, cellChanged, initial, solutio
           onKeyUp={e => handleFocus(e.target)}
           onClick={e => handleFocus(e.target)}
         />
-        {autoCheck && value ? <div className="incorrect-dot" /> : null}
+        {(filled && showIncorrect) || (autoCheck && value) ? <div className="incorrect-dot" /> : null}
       </div>
     )
   }
