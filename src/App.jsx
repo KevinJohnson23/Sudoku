@@ -31,20 +31,21 @@ function App() {
     })
   }
 
-  function newPuzzle() {
+  function newPuzzle(date) {
+    date = date || selectedDate
     const [newSolution, newInitial] = getDailySudoku(
-      selectedDate.year,
-      selectedDate.month,
-      selectedDate.day
+      date.year,
+      date.month,
+      date.day
     )
-    setPuzzle({
-      solution: newSolution,
-      grid: newInitial
-    })
     setTime(0)
     setPaused(false)
     setSelectingPuzzle(false)
     setAdmiringPuzzle(false)
+    setPuzzle({
+      solution: newSolution,
+      grid: newInitial
+    })
   }
 
   function newPuzzleFromDate(date) {
@@ -53,7 +54,7 @@ function App() {
       month: date.month,
       day: date.day
     })
-    newPuzzle()
+    newPuzzle(date)
   }
 
   let completed = true
