@@ -33,47 +33,71 @@ h2 {
 }
 
 .cell {
+  background: none;
   aspect-ratio: 1;
-  width: calc(100% / 9);
-  box-sizing: border-box;
-  border: solid var(--normal-border_width);
   text-align: center;
   font-size: 3.5vmin;
   font-family: Helvetica;
   transition-duration: 0.05s;
   caret-color: transparent;
   outline: none;
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  cursor: default;
 }
 
-.cell:nth-child(3n+1):not(:first-child) {
+.cell-wrapper {
+  position: relative;
+  aspect-ratio: 1;
+  width: calc(100% / 9);
+  box-sizing: border-box;
+  border: solid var(--normal-border_width);
+  outline: none;
+}
+
+.incorrect-dot {
+  background-color: red;
+  position: absolute;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  width: 25%;
+  left: 85%;
+  top: -10%;
+  z-index: 2;
+  box-shadow: 0px 2px 5px #f74c4cf8;
+}
+
+.cell-wrapper:nth-child(3n+1):not(:first-child) {
   border-left: solid var(--bold-border_width);
 }
 
-.cell:nth-child(3n):not(:last-child) {
+.cell-wrapper:nth-child(3n):not(:last-child) {
   border-right: solid var(--bold-border_width);
 }
 
-.grid>.row:first-child>.cell:first-child {
+.grid>.row:first-child>.cell-wrapper:first-child {
   border-top-left-radius: 10%;
 }
 
-.grid>.row:first-child>.cell:last-child {
+.grid>.row:first-child>.cell-wrapper:last-child {
   border-top-right-radius: 10%;
 }
 
-.grid>.row:last-child>.cell:last-child {
+.grid>.row:last-child>.cell-wrapper:last-child {
   border-bottom-right-radius: 10%;
 }
 
-.grid>.row:last-child>.cell:first-child {
+.grid>.row:last-child>.cell-wrapper:first-child {
   border-bottom-left-radius: 10%;
 }
 
-.grid>.row:nth-child(3n+1):not(:first-child)>.cell {
+.grid>.row:nth-child(3n+1):not(:first-child)>.cell-wrapper {
   border-top: solid var(--bold-border_width);
 }
 
-.grid>.row:nth-child(3n):not(:last-child)>.cell {
+.grid>.row:nth-child(3n):not(:last-child)>.cell-wrapper {
   border-bottom: solid var(--bold-border_width);
 }
 
@@ -92,22 +116,25 @@ h2 {
   background: transparent;
 }
 
-.cell.editable {
-  cursor: pointer;
+.cell-wrapper.editable {
   background-color: #ecedf0;
 }
 
-.cell.editable:focus {
+.cell-wrapper.editable>.cell {
+  cursor: pointer;
+}
+
+.cell-wrapper.editable:focus {
   transform: scale(1.07);
   background-color: #ffffff;
 }
 
-.cell.fixed {
+.cell-wrapper.fixed {
   cursor: default;
   background-color: #93e0ff;
 }
 
-.cell.correct {
+.cell-wrapper.correct {
   cursor: default;
   background-color: #93ff9c;
 }

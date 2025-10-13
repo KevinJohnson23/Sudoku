@@ -89,12 +89,22 @@ function App() {
   }
 
   let completed = true
+  let filled = true
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
-      if (puzzle.grid[row][col] != puzzle.solution[row][col]) {
+      if (!puzzle.grid[row][col]) {
+        filled = false
         completed = false
+      }
+      if (!completed && !filled) {
         break
       }
+      if (puzzle.grid[row][col] != puzzle.solution[row][col]) {
+        completed = false
+      }
+    }
+    if (!completed && !filled) {
+      break
     }
   }
   const isPausedEffective = completed || admiringPuzzle || paused || selectingPuzzle || changingSettings;

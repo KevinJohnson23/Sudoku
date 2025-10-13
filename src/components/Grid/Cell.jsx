@@ -29,24 +29,29 @@ export default function Cell({ columnIndex, value, cellChanged, initial, solutio
 
   if (value == solution && (initial || autoCheck)) {
     return (
-      <input
-        type="text"
-        className={"cell " + (initial ? "fixed" : "correct")}
-        value={value || ""}
-        readOnly
-      />
+      <div className={"cell-wrapper " + (initial ? "fixed" : "correct")} >
+        <input
+          type="text"
+          className={"cell"}
+          value={value || ""}
+          readOnly
+        />
+      </div>
     )
   } else {
     return (
-      <input
-        type="text"
-        className="cell editable"
-        value={value || ""}
-        onInput={e => handleInput(e.target)}
-        onFocus={e => handleFocus(e.target)}
-        onKeyUp={e => handleFocus(e.target)}
-        onClick={e => handleFocus(e.target)}
-      />
+      <div className="cell-wrapper editable">
+        <input
+          className="cell"
+          type="text"
+          value={value || ""}
+          onInput={e => handleInput(e.target)}
+          onFocus={e => handleFocus(e.target)}
+          onKeyUp={e => handleFocus(e.target)}
+          onClick={e => handleFocus(e.target)}
+        />
+        {autoCheck && value ? <div className="incorrect-dot" /> : null}
+      </div>
     )
   }
 }
