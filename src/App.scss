@@ -145,7 +145,7 @@ h2 {
   margin-bottom: 1vmin;
 }
 
-.calendar-container {
+.center-body {
   width: 100%;
   height: 81%;
 }
@@ -254,7 +254,7 @@ h2 {
   margin-top: 3vmin;
 }
 
-.select-puzzle-button {
+.footer-button {
   width: 25%;
   height: 5vmin;
   border-radius: var(--border-radius);
@@ -266,10 +266,38 @@ h2 {
   cursor: pointer;
   font-size: 2vmin;
   transition-duration: 0.2s;
+  margin-left: 2%;
 }
 
-.select-puzzle-button:hover {
+.footer-button:hover {
   background-color: var(--black-hover);
+}
+
+.footer-button>img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.settings-button {
+  @extend .footer-button;
+  aspect-ratio: 1;
+  width: auto;
+  background: none;
+  box-shadow: none;
+}
+
+.settings-button:hover {
+  background: none;
+}
+
+.settings-button>img {
+  transition-duration: 0.2s;
+}
+
+.settings-button:hover>img {
+  opacity: 0.9;
+  rotate: 60deg;
 }
 
 .day-button {

@@ -3,11 +3,14 @@ import "./App.scss"
 import Grid from "./components/Grid/Grid"
 import CompletionScreen from "./components/CompletionScreen"
 import SelectionScreen from "./components/PuzzleSelection/SelectionScreen"
+import SettingsScreen from "./components/Settings/SettingsScreen"
 import Timer from "./components/Timer"
 import getDailySudoku from "./sudoku/dailySudoku"
 
 const date = new Date()
 const [solution, initial] = getDailySudoku(date.getFullYear(), date.getMonth(), date.getDate())
+
+const SETTINGS_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Settings-icon-symbol-vector.png/600px-Settings-icon-symbol-vector.png?20181023000603"
 
 function App() {
   const [puzzle, setPuzzle] = useState({
@@ -22,7 +25,9 @@ function App() {
   })
   const [selectingPuzzle, setSelectingPuzzle] = useState(false)
   const [admiringPuzzle, setAdmiringPuzzle] = useState(false)
+  const [changingSettings, setChangingSettings] = useState(false)
   const [time, setTime] = useState(0)
+  const [settings, setSettings] = useState([])
 
   function gridChanged(newGrid) {
     setPuzzle({
@@ -84,6 +89,11 @@ function App() {
     setSelectingPuzzle(true)
   }
 
+  function setNewSettings(newSettings) {
+    setSettings(newSettings)
+    setChangingSettings(false)
+  }
+
   return (
     <>
       {completed && !admiringPuzzle ?
@@ -101,6 +111,13 @@ function App() {
           selectedDate={selectedDate}
           newPuzzleFromDate={newPuzzleFromDate}
         /> : null
+      }
+      {changingSettings ?
+        <SettingsScreen
+          settings={settings}
+          setSettings={setNewSettings}
+        />
+        : null
       }
       <div className="header">
         <div>
@@ -123,7 +140,13 @@ function App() {
       />
       <div className="footer">
         <button
-          className="select-puzzle-button"
+          className="settings-button"
+          onClick={() => { setChangingSettings(true) }}
+        >
+          <img src={SETTINGS_IMAGE} />
+        </button>
+        <button
+          className="footer-button"
           onClick={() => { setSelectingPuzzle(!selectingPuzzle) }}
         >
           Select Puzzle

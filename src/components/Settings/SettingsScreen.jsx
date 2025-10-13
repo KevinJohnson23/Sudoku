@@ -1,21 +1,18 @@
 import { useState } from "react"
-import Calendar from "./Calendar"
 
-export default function SelectionScreen({ setSelectingPuzzle, selectedDate, newPuzzleFromDate }) {
-  const [date, setDate] = useState(selectedDate)
-
+export default function SettingsScreen({ settings, setSettings }) {
   return (
     <div className="overlay" onClick={() => setSelectingPuzzle(false)}>
       <div className="center-overlay" onClick={(e) => e.stopPropagation()}>
         <div className="center-contents">
           <h1>
-            Select Puzzle
+            Settings
           </h1>
           <div className="center-body">
-            <Calendar date={date} setDate={setDate} />
+
           </div>
           <div className="center-button-container">
-            <button onClick={() => { newPuzzleFromDate(date) }}>Select</button>
+            <button onClick={() => setSettings(settings)}>Confirm</button>
           </div>
         </div>
       </div>
