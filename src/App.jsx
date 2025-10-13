@@ -27,7 +27,9 @@ function App() {
   const [admiringPuzzle, setAdmiringPuzzle] = useState(false)
   const [changingSettings, setChangingSettings] = useState(false)
   const [time, setTime] = useState(0)
-  const [settings, setSettings] = useState([])
+  const [settings, setSettings] = useState({
+    showTimer: true
+  })
 
   function gridChanged(newGrid) {
     setPuzzle({
@@ -62,18 +64,8 @@ function App() {
     newPuzzle(date)
   }
 
-  let completed = true
-  for (let row = 0; row < 9; row++) {
-    for (let col = 0; col < 9; col++) {
-      if (puzzle.grid[row][col] != puzzle.solution[row][col]) {
-        completed = false
-        break
-      }
-    }
-  }
-
   useEffect(() => {
-    if (completed || admiringPuzzle || paused || selectingPuzzle) {
+    if (isPausedEffective) {
       return
     }
     const interval = setInterval(() => {
@@ -81,8 +73,6 @@ function App() {
     }, 1000)
     return () => clearInterval(interval)
   })
-
-  const monthShorthand = new Date(selectedDate.year, selectedDate.month).toLocaleString("default", { month: "short" })
 
   function startSelectingPuzzle() {
     setAdmiringPuzzle(true)
@@ -93,6 +83,19 @@ function App() {
     setSettings(newSettings)
     setChangingSettings(false)
   }
+
+  let completed = true
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      if (puzzle.grid[row][col] != puzzle.solution[row][col]) {
+        completed = false
+        break
+      }
+    }
+  }
+  const isPausedEffective = completed || admiringPuzzle || paused || selectingPuzzle || changingSettings;
+
+  const monthShorthand = new Date(selectedDate.year, selectedDate.month).toLocaleString("default", { month: "short" })
 
   return (
     <>
@@ -114,6 +117,7 @@ function App() {
       }
       {changingSettings ?
         <SettingsScreen
+          setChangingSettings={setChangingSettings}
           settings={settings}
           setSettings={setNewSettings}
         />
@@ -124,12 +128,14 @@ function App() {
           <h2>Sudoku</h2>
           <h1>{`${monthShorthand} ${selectedDate.day}, ${selectedDate.year}`}</h1>
         </div>
-        <Timer
-          timeSeconds={time}
-          paused={paused}
-          setPaused={() => { setPaused(!paused) }}
-          hidePause={admiringPuzzle || completed}
-        />
+        {
+          settings.showTimer ? <Timer
+            timeSeconds={time}
+            paused={isPausedEffective}
+            setPaused={() => { setPaused(!paused) }}
+            hidePause={admiringPuzzle || completed}
+          /> : null
+        }
       </div>
       <Grid
         grid={puzzle.grid}
