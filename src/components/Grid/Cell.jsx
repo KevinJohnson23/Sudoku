@@ -1,4 +1,4 @@
-export default function Cell({ columnIndex, value, cellChanged, solution }) {
+export default function Cell({ columnIndex, value, cellChanged, initial, solution, autoCheck }) {
   function isInputValid(newValue) {
     if (!Number.isInteger(newValue)) {
       return false
@@ -27,11 +27,11 @@ export default function Cell({ columnIndex, value, cellChanged, solution }) {
     inputBox.setSelectionRange(length, length)
   }
 
-  if (value == solution) {
+  if (value == solution && (initial || autoCheck)) {
     return (
       <input
         type="text"
-        className="cell fixed"
+        className={"cell " + (initial ? "fixed" : "correct")}
         value={value || ""}
         readOnly
       />

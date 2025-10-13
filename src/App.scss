@@ -107,8 +107,13 @@ h2 {
   background-color: #93e0ff;
 }
 
+.cell.correct {
+  cursor: default;
+  background-color: #93ff9c;
+}
+
 .overlay {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   width: 100%;
   height: 100%;
@@ -441,6 +446,7 @@ h2 {
   height: 17%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.5vmin;
 }
 
 .toggle>* {
@@ -478,7 +484,7 @@ h2 {
 }
 
 .toggle.on>.switch>.track>.thumb {
-  transform: translateX(200%);
+  transform: translateX(175%);
 }
 
 .toggle.on>.switch>.track {

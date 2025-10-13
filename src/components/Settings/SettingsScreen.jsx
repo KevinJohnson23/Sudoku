@@ -19,6 +19,7 @@ export default function SettingsScreen({ setChangingSettings, settings, setSetti
           <div className="center-body">
             <div className="settings-scroller">
               {newToggle("showTimer", "Show Timer")}
+              {newToggle("autoCheck", "Auto Check")}
             </div>
           </div>
           <div className="center-button-container">

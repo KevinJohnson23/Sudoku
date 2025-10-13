@@ -15,6 +15,7 @@ const SETTINGS_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d
 function App() {
   const [puzzle, setPuzzle] = useState({
     solution: solution,
+    initial: initial,
     grid: initial
   })
   const [paused, setPaused] = useState(false)
@@ -28,12 +29,14 @@ function App() {
   const [changingSettings, setChangingSettings] = useState(false)
   const [time, setTime] = useState(0)
   const [settings, setSettings] = useState({
-    showTimer: true
+    showTimer: true,
+    autoCheck: false,
   })
 
   function gridChanged(newGrid) {
     setPuzzle({
       solution: puzzle.solution,
+      initial: puzzle.initial,
       grid: newGrid
     })
   }
@@ -51,6 +54,7 @@ function App() {
     setAdmiringPuzzle(false)
     setPuzzle({
       solution: newSolution,
+      initial: newInitial,
       grid: newInitial
     })
   }
@@ -140,9 +144,11 @@ function App() {
       <Grid
         grid={puzzle.grid}
         gridChanged={gridChanged}
+        initial={puzzle.initial}
         solution={puzzle.solution}
         paused={paused}
         setPaused={setPaused}
+        autoCheck={settings.autoCheck}
       />
       <div className="footer">
         <button
