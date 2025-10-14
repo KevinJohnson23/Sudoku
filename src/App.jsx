@@ -6,6 +6,7 @@ import SelectionScreen from "./components/PuzzleSelection/SelectionScreen"
 import SettingsScreen from "./components/Settings/SettingsScreen"
 import Timer from "./components/Timer"
 import getDailySudoku from "./sudoku/dailySudoku"
+import { loadPuzzleData, saveGrid, saveTime, loadSettings, saveSettings } from "./util/data"
 
 const date = new Date()
 const [solution, initial] = getDailySudoku(date.getFullYear(), date.getMonth(), date.getDate())
