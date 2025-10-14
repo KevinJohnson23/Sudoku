@@ -14,28 +14,25 @@ const [solution, initial] = getDailySudoku(date.getFullYear(), date.getMonth(), 
 const SETTINGS_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Settings-icon-symbol-vector.png/600px-Settings-icon-symbol-vector.png?20181023000603"
 
 function App() {
-  const [puzzle, setPuzzle] = useState({
-    solution: solution,
-    initial: initial,
-    grid: initial
-  })
-  const [paused, setPaused] = useState(false)
   const [selectedDate, setSelectedDate] = useState({
     year: date.getFullYear(),
     month: date.getMonth(),
     day: date.getDate()
   })
+  const [puzzle, setPuzzle] = useState({
+    solution: solution,
+    initial: initial,
+    grid: loadPuzzleData(selectedDate).grid || initial
+  })
+  const [paused, setPaused] = useState(false)
   const [selectingPuzzle, setSelectingPuzzle] = useState(false)
   const [admiringPuzzle, setAdmiringPuzzle] = useState(false)
   const [changingSettings, setChangingSettings] = useState(false)
-  const [time, setTime] = useState(0)
-  const [settings, setSettings] = useState({
-    showTimer: true,
-    autoCheck: false,
-    showIncorrect: true,
-  })
+  const [time, setTime] = useState(loadPuzzleData(selectedDate).time)
+  const [settings, setSettings] = useState(loadSettings())
 
   function gridChanged(newGrid) {
+    saveGrid(selectedDate, newGrid)
     setPuzzle({
       solution: puzzle.solution,
       initial: puzzle.initial,
@@ -50,14 +47,15 @@ function App() {
       date.month,
       date.day
     )
-    setTime(0)
+    const puzzleData = loadPuzzleData(date)
+    setTime(puzzleData.time)
     setPaused(false)
     setSelectingPuzzle(false)
     setAdmiringPuzzle(false)
     setPuzzle({
       solution: newSolution,
       initial: newInitial,
-      grid: newInitial
+      grid: puzzleData.grid || newInitial
     })
   }
 
@@ -70,12 +68,18 @@ function App() {
     newPuzzle(date)
   }
 
+  function incrementTime() {
+    const newTime = time + 1
+    saveTime(selectedDate, newTime)
+    setTime(newTime)
+  }
+
   useEffect(() => {
     if (isPausedEffective) {
       return
     }
     const interval = setInterval(() => {
-      setTime(prevTime => prevTime + 1)
+      incrementTime()
     }, 1000)
     return () => clearInterval(interval)
   })
@@ -86,6 +90,7 @@ function App() {
   }
 
   function setNewSettings(newSettings) {
+    saveSettings(newSettings)
     setSettings(newSettings)
     setChangingSettings(false)
   }
